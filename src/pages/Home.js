@@ -1,17 +1,12 @@
-import { StyleSheet, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import UserTextInput from '../components/UserTextInput';
 import React, { useLayoutEffect, useState } from 'react'
 
 export default function Home({ navigation }) {
 
     const [quilometragem, setQuilometragem] = useState("")
-    const [gasolinaUsada, setGasolinaUsada] = useState("")
+    const [gasolinaUsada, setGasolinaUsada] = useState("") 
     const [resultado, setResultado] = useState(0)
-
-    const calculo = () => {
-        setResultado(quilometragem / gasolinaUsada)
-        navigation.navigate("Resultado", { paramKey: resultado })
-    }
 
     return (
         <View style={styles.container}>
@@ -29,7 +24,7 @@ export default function Home({ navigation }) {
             <View>
                 <Button
                     title='Calcular'
-                    onPress={calculo}
+                    onPress={() => navigation.navigate("Resultado", { paramKey1: quilometragem, paramKey2: gasolinaUsada })}
                 />
             </View>
         </View>
